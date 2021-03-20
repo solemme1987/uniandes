@@ -1,0 +1,26 @@
+{
+    "0": {
+        "Category": "BURGLARY",
+        "Resolution": "NONE"
+    },
+    "1": {
+        "Category": "DRUG/NARCOTIC",
+        "Resolution": "ARREST, BOOKED"
+    },
+    "2": {
+        "Category": "LARCENY/THEFT",
+        "Resolution": "NONE"
+    },
+    "3": {
+        "Category": "NON-CRIMINAL",
+        "Resolution": "NONE"
+    },
+    "4": {
+        "Category": "OTHER OFFENSES",
+        "Resolution": "ARREST, BOOKED"
+    },
+    "5": {
+        "Category": "SUSPICIOUS OCC",
+        "Resolution": "NONE"
+    }
+}

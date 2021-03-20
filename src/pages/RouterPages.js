@@ -52,7 +52,7 @@ export const RouterPages = () => {
                     <Switch>
 
                         <Route path="/categorias" component={ Categories }></Route>
-             <Redirect to="/categorias"/>
+                        <Redirect to="/categorias"/>
                     </Switch>
                 </Content>
 

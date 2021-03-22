@@ -1,1 +1,89 @@
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+.date{
+   width: 150px ;
+   height: 35px;
+}
+
+.date.border{
+    border-radius: 5px;
+    height: 35px;
+}
+
+.card{
+ 
+}
+.tablaCategorias{
+    margin-top: 20px;
+}
+
+.cardContent{
+
+    padding-top: 8px;
+    min-height: 100px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* overflow:hidden; */
+}
+.cardContent:first-child{
+    background:white;
+}
+.cardContent .cardTittle{
+    width: 150px;
+    line-height: 18px;
+}
+.cardContent .comunResolution,.repetResolution{
+     line-height: 8px;
+     font-size: 12px;
+}
+.cardContent .repetResolution{
+    margin-top: 10px;
+    /* text */
+}
+.cardContent .repetResolution > span{
+    background: #4BBF73;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-top: 90px;
+}
+
+.cardContent .logo{
+    position: absolute;
+    font-size: 4rem;
+    align-self: center;
+    margin-top: 3px;
+    top: -20%;
+    right: 10px;
+    
+}
+.cardContent .logo.a{
+    color:#f8bc5a;
+}
+.cardContent .logo.b{
+    color:#55C2D6;
+}
+.cardContent .logo.c{
+    color:#E94540;
+}
+.cardContent .logo.d{
+  color:#4BBF73;
+}
+.divisor{
+    color:gray;
+    border-top: 1px solid rgb(218, 211, 211);
+    width: 100%;
+}

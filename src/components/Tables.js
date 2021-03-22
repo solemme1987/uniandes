@@ -1,84 +1,74 @@
-import React from 'react'
-
-import { Table } from 'antd';
-
-
-
+import React, { useContext, useEffect } from 'react'
+import { Table,Row, Col } from 'antd';
+import { Context } from './context/Context';
+import { FormCategory } from './FormCategory';
 
 export const Tables = () => {
 
-    // fetch('ajax/ajax.goalDetails.php', {
-    //     method: 'POST',
-    //     body: data
-    // })
-    // .then(res => res.text())
-    // .then(data => {
+     const {dataTable,setMaxResolution} = useContext(Context)
+
+    // Columnas de la tabla
+    let columns = [{
+            title: 'CATEGORÍA',
+            dataIndex: 'category',
+        },
+        {
+            title: 'RESOLUSIÓN',
+            dataIndex: 'resolution',
+        },
+
+    ];
+
+     useEffect(() => {
+
+        let midato=  dataTable;
+        if (midato.length>0){
+            console.log('Mi dato',midato)
+
+        const cantidad = midato.reduce((acumulador,actual)=>{
+        return acumulador=[...acumulador,actual.resolution];
+        },[])
+
+        // console.log("Cantidad",cantidad);
+        let repetidos = {};
+
+        // //   Cuento la cantidad de veces que se repite cada Resolucion
+        cantidad.forEach(function(resolucion){
+        repetidos[resolucion] = (repetidos[resolucion] || 0) + 1;
+        });
+
+        // //  OBTENGO UNICAMENTE EL NOMNRE DE LA RESOLUCION QUE MAS SE REPITE Y SU CANTIDAD
+        let masRepetido= Object.entries(repetidos).reduce(function(acumulador, actual){
+            return acumulador[1] > actual[1] ? acumulador : actual;
+        });
+        setMaxResolution(maxRe=>maxRe={
+            resolucion:Object.values(masRepetido)[0],
+            repeticiones:Object.values(masRepetido)[1],
+            total:midato.length
+        })
 
 
-fetch('http://172.24.99.155:8000/api/categorias-filter/?start=2008-03-25T20:00:00.00Z&end=2011-04-05T01:00:00.00Z').then(res => res.text())
-.then(data => {
-   console.log(data);
-})
+        // return () => {
 
-    const columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-        },
-        {
-          title: 'Chinese Score',
-          dataIndex: 'chinese',
-         
-        },
-        {
-          title: 'Math Score',
-          dataIndex: 'math',
-         
-        },
-        {
-          title: 'English Score',
-          dataIndex: 'english',
-         
-        },
-      ];
-      
-      const data = [
-        {
-          key: '1',
-          name: 'John Brown',
-          chinese: 98,
-          math: 60,
-          english: 70,
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          chinese: 98,
-          math: 66,
-          english: 89,
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          chinese: 98,
-          math: 90,
-          english: 70,
-        },
-        {
-          key: '4',
-          name: 'Jim Red',
-          chinese: 88,
-          math: 99,
-          english: 89,
-        },
-      ];
-      
-      function onChange(pagination, filters, sorter, extra) {
-        console.log('params', pagination, filters, sorter, extra);
-      }
-    return (
-        <>
-        <Table columns={columns} dataSource={data} onChange={onChange} />
-        </>
-    )
+        // }
+       }
+    }, [dataTable])
+
+
+
+return (
+    <Row className="tablaCategorias">
+        <Col span={6}>
+            <FormCategory />
+        </Col>
+        <Col span={10}>
+            <Table
+            columns = { columns }
+            dataSource = { dataTable }
+            size="small"
+            pagination={{pageSize:8}}
+            />
+        </Col>
+    </Row>
+);
 }

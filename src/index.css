@@ -48,8 +48,15 @@ body{
      line-height: 8px;
      font-size: 12px;
 }
+.cardContent .comunResolution{
+    border: 1px solid black;
+    padding:3px;
+    border-radius:5px;
+    text-transform: capitalize;
+}
 .cardContent .repetResolution{
     margin-top: 10px;
+  
     /* text */
 }
 .cardContent .repetResolution > span{
@@ -86,4 +93,17 @@ body{
     color:gray;
     border-top: 1px solid rgb(218, 211, 211);
     width: 100%;
+}
+.logoSideBar{
+    height: 32px;
+    margin: 16px 16px 16px 12px;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: rgba(255, 255, 255, 0.2); */
+}
+.logoSideBar >span{
+    margin-left: 8px;
 }

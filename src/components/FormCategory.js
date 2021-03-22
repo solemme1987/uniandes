@@ -17,6 +17,7 @@ export const FormCategory = () => {
 
     const format = 'HH';
 
+    // CAMBIO LA HORA DE INICO Y LA AGREGO A LA URL
     function changeStartHour(time, timeString) {
         setStartHour(startHour=>startHour=timeString);
 
@@ -26,6 +27,7 @@ export const FormCategory = () => {
 
     }
 
+    // CAMBIO LA HORA DE FIN Y LA AGREGO ALA URL
     function changeEndtHour(time, timeString) {
 
         setEndHour(hourEnd=>hourEnd=timeString)
@@ -71,10 +73,10 @@ export const FormCategory = () => {
                 },
                 }}
             >
-            <Button type="primary" htmlType="submit" size='large' block>
-                 Consultar
-            </Button>
-      </Form.Item>
+                <Button type="primary" htmlType="submit" size='large' block>
+                    Consultar
+                </Button>
+            </Form.Item>
       </Form>
 
     </>

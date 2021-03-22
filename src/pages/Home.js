@@ -20,23 +20,21 @@ export const Home = () => {
 
      useEffect( () => {
         let data=[];
-      
         fetch(url)
         .then(res => res.json())
         .then(response => {
             Object.values(response).forEach((infoTable, idx) => {
 
-            data=[...data,{
+                data=[...data,{
                     key:idx+1,
                     category: infoTable.Category,
-                    resolution: infoTable.Resolution
+                    resolution: infoTable.Resolution,
+                    cantidad: infoTable.Cantidad
                 }];
-                // console.log(dataSource);
+    
             });
             setDataTable([...data]);
         });
-
-
         return () => {
             setDataTable([])
         }

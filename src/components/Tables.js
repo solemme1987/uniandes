@@ -7,18 +7,23 @@ export const Tables = () => {
 
      const {dataTable,setMaxResolution} = useContext(Context)
 
-    // Columnas de la tabla
+    // ESTAS SON LAS COLUMNAS DE LA TABLA
     let columns = [{
             title: 'CATEGORÍA',
             dataIndex: 'category',
         },
         {
-            title: 'RESOLUSIÓN',
+            title: 'RESOLUCIÓN',
             dataIndex: 'resolution',
+        },
+        {
+            title: 'CANTIDAD',
+            dataIndex: 'cantidad',
         },
 
     ];
 
+    // ESTE USEEFFECT LO QU EHACE SACARME  LA  CATEGORIA QUE MAS SE REPITE EN LA TABLA
      useEffect(() => {
 
         let midato=  dataTable;
@@ -29,46 +34,49 @@ export const Tables = () => {
         return acumulador=[...acumulador,actual.resolution];
         },[])
 
-        // console.log("Cantidad",cantidad);
+
         let repetidos = {};
 
-        // //   Cuento la cantidad de veces que se repite cada Resolucion
+        //Cuento la cantidad de veces que se repite cada Resolucion
         cantidad.forEach(function(resolucion){
         repetidos[resolucion] = (repetidos[resolucion] || 0) + 1;
         });
 
-        // //  OBTENGO UNICAMENTE EL NOMNRE DE LA RESOLUCION QUE MAS SE REPITE Y SU CANTIDAD
+        //OBTENGO UNICAMENTE EL NOMBRE DE LA RESOLUCION QUE MAS SE REPITE Y SU CANTIDAD
         let masRepetido= Object.entries(repetidos).reduce(function(acumulador, actual){
             return acumulador[1] > actual[1] ? acumulador : actual;
         });
+
+        //PASO EL NOMBRE  DE LA RESOLUCION, LA TOTALIDA DE VECES QUE SE REPITE Y 
+        // Y  LA TOTALIDA DE LA MUESTRA, POR EJEMPLO SE REPITE 5 DE 20
         setMaxResolution(maxRe=>maxRe={
             resolucion:Object.values(masRepetido)[0],
             repeticiones:Object.values(masRepetido)[1],
             total:midato.length
         })
 
-
-        // return () => {
-
-        // }
        }
-    }, [dataTable])
+     }, [dataTable])
 
 
 
 return (
     <Row className="tablaCategorias">
+
         <Col span={6}>
             <FormCategory />
         </Col>
-        <Col span={10}>
+
+        <Col span={18}>
             <Table
-            columns = { columns }
-            dataSource = { dataTable }
-            size="small"
-            pagination={{pageSize:8}}
+                columns = { columns }
+                dataSource = { dataTable }
+                size="small"
+                pagination={{pageSize:8}}
             />
         </Col>
+
     </Row>
 );
 }
+

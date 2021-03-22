@@ -6,7 +6,7 @@ import { Tables } from '../components/Tables';
 export const Categories = () => {
     return (
         <>
-            <CardInfo />
+            {/* <CardInfo /> */}
             <Tables />
         </>
     )

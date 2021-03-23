@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useEffect, useState} from 'react';
 import moment from 'moment';
 import {
   Form,
@@ -10,6 +10,8 @@ import {
 import { Context } from './context/Context';
 import { Date } from './Date';
 import { Option } from 'antd/lib/mentions';
+import { ListaCategorias } from '../containers/ListaCategorias ';
+
 
 
 export const FormCategory = () => {
@@ -31,6 +33,15 @@ export const FormCategory = () => {
     const format = 'HH'; //formato para la hora
 
 
+      const [showCats, setshowCats] = useState('none')
+      useEffect(() => {
+        if(tableHead==='distrito'){
+            setshowCats('block');
+         }else if(tableHead==='categoria'){
+            setshowCats('none');
+         }
+    
+      }, [tableHead])
     // CAMBIO LA HORA DE INICO Y LA AGREGO A LA URL
     function changeStartHour(time, timeString) {
 
@@ -78,38 +89,33 @@ export const FormCategory = () => {
             labelCol={{ span: 8}}
             wrapperCol={{ span: 16}}
             layout="horizontal"
+            style={{marginTop:'20px'}}
         >
-            <Form.Item label="Fecha Inico">
+            <Form.Item >
+                <label style={{fontWeight: 'bolder'}}>Fecha de incio</label>
                 <Date tipo={'incio'}/>
             </Form.Item>
 
-            <Form.Item label="Hora Inico">
-                <TimePicker className="date border" onChange={changeStartHour} defaultValue={moment('00', 'HH')} format={format}/>
+            <Form.Item className="inputData">
+                <label>Hora de inicio</label>
+                <TimePicker  size="large" className="date border" onChange={changeStartHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
 
-            <Form.Item label="Fecha Final">
+            <Form.Item  className="inputData">
+                <label>Fecha de Inicio</label>
                 <Date  tipo={'fin'}/>
             </Form.Item>
 
-            <Form.Item label="Hora Final">
-                <TimePicker className="date border" onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
+            <Form.Item className="inputData ">
+                 <label>Hora Final</label>
+                <TimePicker className="date border " onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
 
-            {/* <Form.Item name="gender" label="Gender" rules={[{ required: true }]}  >
-                <Select
-                    className="date border"
-                    placeholder="Categorias"
-                    // onChange={}
-                    allowClear
-
-                >
-                    <Option value="male">male</Option>
-                    <Option value="female">female</Option>
-                    <Option value="other">other</Option>
-                </Select>
+            {/* <Form.Item name="categoria" label="Categoria" style={{'display':showCats}} >
+                  <ListaCategorias  />
             </Form.Item> */}
 
-            <Form.Item
+            {/* <Form.Item
                 wrapperCol={{
                 xs: {
                     span: 24,
@@ -124,7 +130,7 @@ export const FormCategory = () => {
                 <Button type="primary" htmlType="submit" size='large' block>
                     Consultar
                 </Button>
-            </Form.Item>
+            </Form.Item> */}
       </Form>
 
     </>

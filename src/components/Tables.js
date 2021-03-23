@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Table,Row, Col } from 'antd';
 import { Context } from './context/Context';
 import { FormCategory } from './FormCategory';
+import { CardInfo} from './CardInfo';
 
 export const Tables = () => {
 
@@ -126,7 +127,8 @@ export const Tables = () => {
 return (
     <Row className="tablaCategorias">
 
-        <Col span={6}>
+        <Col span={6} >
+            <CardInfo />
             <FormCategory />
         </Col>
 

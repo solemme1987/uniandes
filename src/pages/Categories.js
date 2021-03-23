@@ -10,8 +10,7 @@ export const Categories = () => {
     // setTableHead(tHead=>tHead='categoria');
     return (
         <>
-            <CardInfo />
-            <Tables tableHead={'categoria'}/>
+            <Tables />
         </>
     )
 }

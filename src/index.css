@@ -6,11 +6,21 @@ body{
     box-sizing: border-box;
 }
 .date{
-   width: 150px ;
-   max-width: 150px ;
-   height: 35px;
+   width: 255px ;
+   max-width: 255px ;
+   height: 40px;
+   outline: 0;
 }
+.inputData{
+    margin-top: -15px;
+}
+.inputData .hora{
 
+    height: 100px;
+}
+.inputData label{
+    font-weight: bolder;
+}
 .date.border{
     border-radius: 5px;
     height: 35px;

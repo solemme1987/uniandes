@@ -5,56 +5,119 @@ import { FormCategory } from './FormCategory';
 
 export const Tables = () => {
 
-     const {dataTable,setMaxResolution} = useContext(Context)
+     const {setDataTable,url,urlDistrito,dataTable,setMaxResolution,tableHead} = useContext(Context)
 
+    let columns;
     // ESTAS SON LAS COLUMNAS DE LA TABLA
-    let columns = [{
-            title: 'CATEGORÍA',
-            dataIndex: 'category',
+    if(tableHead==="categoria"){
+
+        columns = [{
+               title: 'CATEGORÍA',
+               dataIndex: 'category',
+           },
+           {
+               title: 'RESOLUCIÓN',
+               dataIndex: 'resolution',
+           },
+           {
+               title: 'CANTIDAD',
+               dataIndex: 'cantidad',
+           },
+
+        ];
+    }else{
+
+        columns = [{
+            title: 'PDDISTRICT',
+            dataIndex: 'pddistrict',
         },
         {
             title: 'RESOLUCIÓN',
             dataIndex: 'resolution',
         },
         {
-            title: 'CANTIDAD',
-            dataIndex: 'cantidad',
+            title: 'SUMA',
+            dataIndex: 'suma',
         },
 
     ];
+    }
+    // LLENO LA TABLA
+    useEffect( () => {
+        let data=[];
+        fetch(tableHead==='categoria' ? url :urlDistrito)
+        .then(res => res.json())
+        .then(response => {
+            if(tableHead==='categoria'){//SI INGRESO A LA  SESION DE CATEGORIAS LA TABLA SE LLENA CON CATEGORIAS
+                Object.values(response).forEach((infoTable, idx) => {
 
-    // ESTE USEEFFECT LO QU EHACE SACARME  LA  CATEGORIA QUE MAS SE REPITE EN LA TABLA
+                    data=[...data,{
+                        key:idx+1,
+                        category: infoTable.Category,
+                        resolution: infoTable.Resolution,
+                        cantidad: infoTable.Cantidad
+                    }];
+
+                });
+            }else{//SI INGRESO A LA SESION DE DISTRITOS LA TABLA SE LLENA CON LA DATA DE DISTRITOS 
+                Object.values(response).forEach((infoTable, idx) => {
+
+                    data=[...data,{
+                        key:idx+1,
+                        pddistrict: infoTable.PdDistrict,
+                        resolution: infoTable.Resolution,
+                        suma: infoTable.suma
+                    }];
+
+                });
+            }
+
+            setDataTable(dtable=>dtable=[...data]);
+        });
+
+        return () => {
+            setDataTable(dtable=>dtable=[])
+        }
+    },[tableHead==='categoria' ? url :urlDistrito]);
+    
+
+    // ESTE USEEFFECT LO QU EHACE SACARME  LA
+    // CATEGORIA QUE MAS SE REPITE EN LA TABLA
+    let midato;
      useEffect(() => {
 
-        let midato=  dataTable;
+         midato=  dataTable;
         if (midato.length>0){
-            console.log('Mi dato',midato)
-
-        const cantidad = midato.reduce((acumulador,actual)=>{
-        return acumulador=[...acumulador,actual.resolution];
-        },[])
 
 
-        let repetidos = {};
+            const cantidad = midato.reduce((acumulador,actual)=>{
+            return acumulador=[...acumulador,actual.resolution];
+            },[])
 
-        //Cuento la cantidad de veces que se repite cada Resolucion
-        cantidad.forEach(function(resolucion){
-        repetidos[resolucion] = (repetidos[resolucion] || 0) + 1;
-        });
 
-        //OBTENGO UNICAMENTE EL NOMBRE DE LA RESOLUCION QUE MAS SE REPITE Y SU CANTIDAD
-        let masRepetido= Object.entries(repetidos).reduce(function(acumulador, actual){
-            return acumulador[1] > actual[1] ? acumulador : actual;
-        });
+            let repetidos = {};
 
-        //PASO EL NOMBRE  DE LA RESOLUCION, LA TOTALIDA DE VECES QUE SE REPITE Y 
-        // Y  LA TOTALIDA DE LA MUESTRA, POR EJEMPLO SE REPITE 5 DE 20
-        setMaxResolution(maxRe=>maxRe={
-            resolucion:Object.values(masRepetido)[0],
-            repeticiones:Object.values(masRepetido)[1],
-            total:midato.length
-        })
+            //Cuento la cantidad de veces que se repite cada Resolucion
+            cantidad.forEach(function(resolucion){
+            repetidos[resolucion] = (repetidos[resolucion] || 0) + 1;
+            });
 
+            //OBTENGO UNICAMENTE EL NOMBRE DE LA RESOLUCION QUE MAS SE REPITE Y SU CANTIDAD
+            let masRepetido= Object.entries(repetidos).reduce(function(acumulador, actual){
+                return acumulador[1] > actual[1] ? acumulador : actual;
+            });
+
+            //PASO EL NOMBRE  DE LA RESOLUCION, LA TOTALIDA DE VECES QUE SE REPITE Y
+            // Y  LA TOTALIDA DE LA MUESTRA, POR EJEMPLO SE REPITE 5 DE 20
+            setMaxResolution(maxRe=>maxRe={
+                resolucion:Object.values(masRepetido)[0],
+                repeticiones:Object.values(masRepetido)[1],
+                total:midato.length
+            })
+
+       }
+       return () => {
+          setMaxResolution(maxR=>maxR=[])
        }
      }, [dataTable])
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import { Layout, Menu, Row } from 'antd';
+import { Layout, Menu} from 'antd';
 import { Categories } from './Categories';
-import { DashBoard } from './DashBoard';
+import {Distrito } from './Distrito';
 
 import {
-  UploadOutlined,
   AppstoreOutlined,
   BankOutlined,
   PieChartOutlined,
@@ -20,8 +19,6 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
-import { CardInfo } from '../components/CardInfo';
-
 
 export const RouterPages = () => {
 
@@ -43,20 +40,20 @@ export const RouterPages = () => {
                     </Menu.Item>
 
                     <Menu.Item key="2" icon={<BankOutlined />}>
-                         <Link to="/dashboard"> Por distrito</Link>
+                         <Link to="/distrito"> Por distrito</Link>
                     </Menu.Item>
 
                     <Menu.Item key="3" icon={<PieChartOutlined />}>
-                         <Link to="/dashboard"> Punto 3</Link>
+                         <Link to="/"> Punto 3</Link>
                     </Menu.Item>
 
 
                     <Menu.Item key="4" icon={<EnvironmentOutlined />}>
-                         <Link to="/dashboard"> Punto 4</Link>
+                         <Link to="/"> Punto 4</Link>
                     </Menu.Item>
 
                     <Menu.Item key="5" icon={<BarChartOutlined />}>
-                         <Link to="/dashboard"> Punto 5</Link>
+                         <Link to="/"> Punto 5</Link>
                     </Menu.Item>
 
                 </Menu>
@@ -68,18 +65,16 @@ export const RouterPages = () => {
                 <Content
                     className="site-layout-background"
                     style={{
-                    margin: '24px 16px',
-                    padding: 24,
-                    minHeight: 280,
-                    }}>
-                        <Row gutter={[16, 16]}>
-                     <CardInfo />
-                     <CardInfo /><CardInfo /><CardInfo />
-                     </Row>
+                        margin: '24px 16px',
+                        padding: 24,
+                        minHeight: 280,
+                    }}
+                >
                     <Switch>
 
                         <Route path="/categorias" component={ Categories }></Route>
-                        <Route path="/dashboard" component={ DashBoard  }></Route>
+                        <Route path="/distrito" component={ Distrito }></Route>
+
                         <Redirect to="/categorias"/>
 
                     </Switch>

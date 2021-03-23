@@ -1,29 +1,54 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import moment from 'moment';
 import {
   Form,
   Button,
   TimePicker,
+  Select,
 } from 'antd';
 
 import { Context } from './context/Context';
 import { Date } from './Date';
+import { Option } from 'antd/lib/mentions';
 
 
 export const FormCategory = () => {
 
+    //tod lo que me provee el use context
+    const {
+        setStartHour,
+        setEndHour,
+        startHour,
+        endHour,
+        starDate,
+        endDate, 
+        setUrl,
+        setUrlDistrito, 
+        categoria,
+        setCategoria,
+        tableHead} = useContext(Context);
 
-    const {setStartHour,setEndHour,startHour,endHour,starDate,endDate, setUrl} = useContext(Context);
+    const format = 'HH'; //formato para la hora
 
-    const format = 'HH';
 
     // CAMBIO LA HORA DE INICO Y LA AGREGO A LA URL
     function changeStartHour(time, timeString) {
+
         setStartHour(startHour=>startHour=timeString);
+        let newUrl
 
-        let newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${timeString}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
+        if(tableHead==='categoria'){
 
-        setUrl(nUrl=>nUrl=newUrl);
+            // AQUI MODIFCO LA URL DEL PUNTO 1 PARA LAS CATEGORIAS
+           newUrl=`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${timeString}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
+           setUrl(nUrl=>nUrl=newUrl);
+        }
+        else {
+            // AQUI MODIFCO LA URL DEL PUNTO 2 PARA LOS DISTRITOS
+            newUrl=`http://172.24.99.155:8000/api/distritos-filter/${categoria}/?start=${starDate}T${timeString}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
+            setUrlDistrito(nUrl=>nUrl=newUrl)
+            console.log(tableHead)
+        }
 
     }
 
@@ -31,10 +56,19 @@ export const FormCategory = () => {
     function changeEndtHour(time, timeString) {
 
         setEndHour(hourEnd=>hourEnd=timeString)
+        let newUrl
 
-        let newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
+        if(tableHead==='categoria'){
+            newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
 
-        setUrl(nUrl=>nUrl=newUrl);
+            setUrl(nUrl=>nUrl=newUrl);
+        }else {
+
+            newUrl =`http://172.24.99.155:8000/api/distritos-filter/${categoria}/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
+
+            setUrlDistrito(nUrl=>nUrl=newUrl);
+
+        }
     }
 
 
@@ -60,6 +94,20 @@ export const FormCategory = () => {
             <Form.Item label="Hora Final">
                 <TimePicker className="date border" onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
+
+            {/* <Form.Item name="gender" label="Gender" rules={[{ required: true }]}  >
+                <Select
+                    className="date border"
+                    placeholder="Categorias"
+                    // onChange={}
+                    allowClear
+
+                >
+                    <Option value="male">male</Option>
+                    <Option value="female">female</Option>
+                    <Option value="other">other</Option>
+                </Select>
+            </Form.Item> */}
 
             <Form.Item
                 wrapperCol={{

@@ -8,8 +8,8 @@ export const CardInfo = () => {
  const {resolucion,repeticiones,total} = maxResolution;
 
     return (
-        // <Row gutter={[16, 16]}>
-           <>
+        <Row gutter={[16, 16]}>
+
             <Col span={6} className="card gutter-row">
                  <div className="cardContent">
                      <h3 className="cardTittle">Resolucíon Mas común</h3>
@@ -20,8 +20,8 @@ export const CardInfo = () => {
                      </div>
                  </div>
             </Col>
-            </>
-            /* <Col span={6} className="card gutter-row">
+
+             <Col span={6} className="card gutter-row">
                  <div className="cardContent">
                      <h3 className="cardTittle">Resolucíon Mas común</h3>
                      <p className="comunResolution">Aarrest, Booked</p>
@@ -50,9 +50,9 @@ export const CardInfo = () => {
                        <p className="repetResolution">Repeticones: <span>8 de 20</span></p>
                      </div>
                  </div>
-            </Col> */
+            </Col>
 
-        // </Row>
+        </Row>
     )
 }
 

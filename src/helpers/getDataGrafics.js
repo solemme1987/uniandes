@@ -6,6 +6,7 @@ export const getDataGrafics=async (url)=>{
     .then(res => res.json())
     .then(response => {
 
+     
 
       data=[...data,response];
 

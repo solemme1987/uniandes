@@ -32,6 +32,11 @@ export const Charts = () => {
          <Space direction="vertical" size={size}>
 
             <Row gutter={[16, 5]}>
+                <Col span={24} style={{fontSize:'1.5rem'}}>
+                    <h1>
+                       Elije una Distrito para la gráfica
+                    </h1>
+                </Col>
                 {
                     nombresDistritos.map((element) => (
 

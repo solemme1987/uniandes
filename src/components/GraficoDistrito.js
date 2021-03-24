@@ -16,7 +16,7 @@ export const GraficoDistrito = ({distrito}) => {
         setData([])
        )
     }, [url])
-       
+
     let config = {
         data:  data.sort((a, b) => a.year - b.year),
         xField: 'year',

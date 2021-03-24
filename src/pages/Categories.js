@@ -44,9 +44,12 @@ export const Categories = () => {
             })
 
 
-
-     
         setTableHead(tHead=>tHead='categoria');
+
+        return(
+            setDataTable(dtable=>dtable=[])
+        )
+
      },[url])
 
 

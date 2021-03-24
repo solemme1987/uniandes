@@ -5,7 +5,7 @@ import { Tables } from '../components/Tables'
 
 export const Distrito = () => {
  const {urlDistrito,setDataTable,setTableHead} = useContext(Context);
- 
+
     // ColumNS PARA LA TABLA DE DISTRITO PUNTO 2
     const columns = [{
             title: 'PDDISTRICT',
@@ -42,6 +42,10 @@ export const Distrito = () => {
         })
 
         setTableHead(tHead=>tHead='distrito');
+
+        return(
+            setDataTable(dtable=>dtable=[])
+        )
     },[urlDistrito]);
 
     return (

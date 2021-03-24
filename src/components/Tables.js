@@ -4,58 +4,9 @@ import { Context } from './context/Context';
 import { FormCategory } from './FormCategory';
 import { CardInfo} from './CardInfo';
 
-export const Tables = ({columns,data}) => {
+export const Tables = ({columns}) => {
 
-    const {setDataTable,url,urlDistrito,dataTable,setMaxResolution,tableHead} = useContext(Context)
-
-
-    // LLENO LA TABLA
-    // useEffect( () => {
-
-    // },[tableHead==='categoria' ? url :urlDistrito]);
-
-    // const llenarTabla=()=>{
-
-    //     let data=[];
-    //     fetch(tableHead==='categoria' ? url :urlDistrito)
-        
-    //     .then(res => res.json())
-    //     .then(response => {
-    //         if(tableHead==='categoria'){//SI INGRESO A LA  SESION DE CATEGORIAS LA TABLA SE LLENA CON CATEGORIAS
-    //             Object.values(response).forEach((infoTable, idx) => {
-
-    //                 data=[...data,{
-    //                     key:idx+1,
-    //                     category: infoTable.Category,
-    //                     resolution: infoTable.Resolution,
-    //                     cantidad: infoTable.Cantidad
-    //                 }];
-
-    //             });
-    //         }else{//SI INGRESO A LA SESION DE DISTRITOS LA TABLA SE LLENA CON LA DATA DE DISTRITOS 
-    //             Object.values(response).forEach((infoTable, idx) => {
-
-    //                 data=[...data,{
-    //                     key:idx+1,
-    //                     pddistrict: infoTable.PdDistrict,
-    //                     resolution: infoTable.Resolution,
-    //                     suma: infoTable.suma
-    //                 }];
-
-    //             });
-    //         }
-
-    //         setDataTable(dtable=>dtable=[...data]);
-    //     });
-
-    //     // return () => {
-    //     //     setDataTable(dtable=>dtable=[])
-    //     // }
-
-    // }
-
-
-
+    const {dataTable,setMaxResolution} = useContext(Context)
 
 
 
@@ -66,7 +17,7 @@ export const Tables = ({columns,data}) => {
     let midato;
      useEffect(() => {
 
-         midato=  dataTable;
+         midato =  dataTable;
         if (midato.length>0){
 
 

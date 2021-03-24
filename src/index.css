@@ -115,3 +115,11 @@ body{
 .logoSideBar >span{
     margin-left: 8px;
 }
+
+
+/* ESTILOS PAR EL SELECT */
+select{
+    border: 1px solid rgb(228, 223, 223);
+    outline: 0;
+    background: white;
+}

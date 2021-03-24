@@ -14,8 +14,8 @@ import { ListaCategorias } from '../containers/ListaCategorias ';
 
 
 
-export const FormCategory = () => {
-
+export const FormCategory = ({showSelect}) => {
+   console.log(showSelect)
     //tod lo que me provee el use context
     const 
     {
@@ -105,7 +105,7 @@ export const FormCategory = () => {
                 <TimePicker className="date border " onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
 
-            <Form.Item name="categoria" className="inputData " >
+            <Form.Item name="categoria" className="inputData " style={{display:showSelect}} >
                   <label>Categorias</label>
                   <ListaCategorias  />
             </Form.Item>

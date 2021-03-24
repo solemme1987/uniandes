@@ -50,7 +50,7 @@ export const Distrito = () => {
 
     return (
         <>
-             <Tables columns={columns} />
+             <Tables columns={columns} showSelect={''}/>
         </>
     )
 }

@@ -55,7 +55,7 @@ export const Categories = () => {
 
     return (
         <>
-         <Tables columns={columns} />
+         <Tables columns={columns} showSelect={'none'}/>
         </>
     )
 }

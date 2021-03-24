@@ -4,7 +4,7 @@ import { Context } from './context/Context';
 import { FormCategory } from './FormCategory';
 import { CardInfo} from './CardInfo';
 
-export const Tables = ({columns}) => {
+export const Tables = ({columns,showSelect}) => {
 
     const {dataTable,setMaxResolution} = useContext(Context)
 
@@ -59,7 +59,7 @@ return (
 
         <Col span={6} >
             <CardInfo />
-            <FormCategory />
+            <FormCategory showSelect={showSelect} />
         </Col>
 
         <Col span={18}>

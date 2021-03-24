@@ -4,45 +4,16 @@ import { Context } from './context/Context';
 import { FormCategory } from './FormCategory';
 import { CardInfo} from './CardInfo';
 
-export const Tables = () => {
+export const Tables = ({columns}) => {
+    let titulosTablas;
+    useEffect(() => {
+        console.log(titulosTablas)
+        titulosTablas=columns;
+    }, [columns])
 
-     const {setDataTable,url,urlDistrito,dataTable,setMaxResolution,tableHead} = useContext(Context)
+    const {setDataTable,url,urlDistrito,dataTable,setMaxResolution,tableHead} = useContext(Context)
 
-    let columns;
-    // ESTAS SON LAS COLUMNAS DE LA TABLA
-    if(tableHead==="categoria"){
 
-        columns = [{
-               title: 'CATEGORÍA',
-               dataIndex: 'category',
-           },
-           {
-               title: 'RESOLUCIÓN',
-               dataIndex: 'resolution',
-           },
-           {
-               title: 'CANTIDAD',
-               dataIndex: 'cantidad',
-           },
-
-        ];
-    }else{
-
-        columns = [{
-            title: 'PDDISTRICT',
-            dataIndex: 'pddistrict',
-        },
-        {
-            title: 'RESOLUCIÓN',
-            dataIndex: 'resolution',
-        },
-        {
-            title: 'SUMA',
-            dataIndex: 'suma',
-        },
-
-    ];
-    }
     // LLENO LA TABLA
     useEffect( () => {
         let data=[];

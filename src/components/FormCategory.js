@@ -17,7 +17,8 @@ import { ListaCategorias } from '../containers/ListaCategorias ';
 export const FormCategory = () => {
 
     //tod lo que me provee el use context
-    const {
+    const 
+    {
         setStartHour,
         setEndHour,
         startHour,
@@ -27,21 +28,14 @@ export const FormCategory = () => {
         setUrl,
         setUrlDistrito, 
         categoria,
-        setCategoria,
-        tableHead} = useContext(Context);
+        tableHead
+    } = useContext(Context);
 
     const format = 'HH'; //formato para la hora
 
 
-      const [showCats, setshowCats] = useState('none')
-      useEffect(() => {
-        if(tableHead==='distrito'){
-            setshowCats('block');
-         }else if(tableHead==='categoria'){
-            setshowCats('none');
-         }
-    
-      }, [tableHead])
+
+   
     // CAMBIO LA HORA DE INICO Y LA AGREGO A LA URL
     function changeStartHour(time, timeString) {
 
@@ -111,26 +105,11 @@ export const FormCategory = () => {
                 <TimePicker className="date border " onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
 
-            {/* <Form.Item name="categoria" label="Categoria" style={{'display':showCats}} >
+            <Form.Item name="categoria" className="inputData " >
+                  <label>Categorias</label>
                   <ListaCategorias  />
-            </Form.Item> */}
+            </Form.Item>
 
-            {/* <Form.Item
-                wrapperCol={{
-                xs: {
-                    span: 24,
-                    offset: 0,
-                },
-                sm: {
-                    span: 16,
-                    offset: 5,
-                },
-                }}
-            >
-                <Button type="primary" htmlType="submit" size='large' block>
-                    Consultar
-                </Button>
-            </Form.Item> */}
       </Form>
 
     </>

@@ -1,7 +1,7 @@
 export const fetchData= async()=>{
     let algo=[]
      const url = `http://172.24.99.155:8000/api/categorias-listed/`;
-     const resp = await fetch(url)
+      await fetch(url)
      .then(data=> data.json())
      .then((resp)=>{
         //  algo=[...algo,resp.Category]

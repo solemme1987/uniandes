@@ -1,16 +1,27 @@
-import React, { useContext } from 'react'
-import { CardInfo } from '../components/CardInfo';
-import { Context } from '../components/context/Context';
 import { Tables } from '../components/Tables';
 
-
 export const Categories = () => {
-    
+
+       const columns = [{
+               title: 'CATEGORÍA',
+               dataIndex: 'category',
+           },
+           {
+               title: 'RESOLUCIÓN',
+               dataIndex: 'resolution',
+           },
+           {
+               title: 'CANTIDAD',
+               dataIndex: 'cantidad',
+           },
+
+        ];
+
     // const {setTableHead} = useContext(Context)
     // setTableHead(tHead=>tHead='categoria');
     return (
         <>
-            <Tables />
+         <Tables columns={columns}/>
         </>
     )
 }

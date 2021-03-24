@@ -12,11 +12,11 @@ export const CardInfo = () => {
 
             <Col span={23} className="card gutter-row">
                  <div className="cardContent">
-                     <h3 className="cardTittle">Resolucíon Mas común</h3>
+                     <h3 className="cardTittle">Resolución Más común</h3>
                      <p className="comunResolution">{resolucion}</p>
                      <i className="fab fa-algolia logo a"></i>
                      <div className="divisor">
-                       <p className="repetResolution">Repeticones: <span>{repeticiones} de {total}</span></p>
+                       <p className="repetResolution">Repeticiones: <span>{repeticiones} de {total}</span></p>
                      </div>
                  </div>
             </Col>

@@ -5,7 +5,6 @@ import { fetchData } from '../helpers/getCategory';
 
 export const ListaCategorias  = () => {
     const {
-       
         startHour,
         endHour,
         starDate,

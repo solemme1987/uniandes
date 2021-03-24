@@ -4,54 +4,62 @@ import { Context } from './context/Context';
 import { FormCategory } from './FormCategory';
 import { CardInfo} from './CardInfo';
 
-export const Tables = ({columns}) => {
-    let titulosTablas;
-    useEffect(() => {
-        console.log(titulosTablas)
-        titulosTablas=columns;
-    }, [columns])
+export const Tables = ({columns,data}) => {
 
     const {setDataTable,url,urlDistrito,dataTable,setMaxResolution,tableHead} = useContext(Context)
 
 
     // LLENO LA TABLA
-    useEffect( () => {
-        let data=[];
-        fetch(tableHead==='categoria' ? url :urlDistrito)
-        .then(res => res.json())
-        .then(response => {
-            if(tableHead==='categoria'){//SI INGRESO A LA  SESION DE CATEGORIAS LA TABLA SE LLENA CON CATEGORIAS
-                Object.values(response).forEach((infoTable, idx) => {
+    // useEffect( () => {
 
-                    data=[...data,{
-                        key:idx+1,
-                        category: infoTable.Category,
-                        resolution: infoTable.Resolution,
-                        cantidad: infoTable.Cantidad
-                    }];
+    // },[tableHead==='categoria' ? url :urlDistrito]);
 
-                });
-            }else{//SI INGRESO A LA SESION DE DISTRITOS LA TABLA SE LLENA CON LA DATA DE DISTRITOS 
-                Object.values(response).forEach((infoTable, idx) => {
+    // const llenarTabla=()=>{
 
-                    data=[...data,{
-                        key:idx+1,
-                        pddistrict: infoTable.PdDistrict,
-                        resolution: infoTable.Resolution,
-                        suma: infoTable.suma
-                    }];
+    //     let data=[];
+    //     fetch(tableHead==='categoria' ? url :urlDistrito)
+        
+    //     .then(res => res.json())
+    //     .then(response => {
+    //         if(tableHead==='categoria'){//SI INGRESO A LA  SESION DE CATEGORIAS LA TABLA SE LLENA CON CATEGORIAS
+    //             Object.values(response).forEach((infoTable, idx) => {
 
-                });
-            }
+    //                 data=[...data,{
+    //                     key:idx+1,
+    //                     category: infoTable.Category,
+    //                     resolution: infoTable.Resolution,
+    //                     cantidad: infoTable.Cantidad
+    //                 }];
 
-            setDataTable(dtable=>dtable=[...data]);
-        });
+    //             });
+    //         }else{//SI INGRESO A LA SESION DE DISTRITOS LA TABLA SE LLENA CON LA DATA DE DISTRITOS 
+    //             Object.values(response).forEach((infoTable, idx) => {
 
-        return () => {
-            setDataTable(dtable=>dtable=[])
-        }
-    },[tableHead==='categoria' ? url :urlDistrito]);
-    
+    //                 data=[...data,{
+    //                     key:idx+1,
+    //                     pddistrict: infoTable.PdDistrict,
+    //                     resolution: infoTable.Resolution,
+    //                     suma: infoTable.suma
+    //                 }];
+
+    //             });
+    //         }
+
+    //         setDataTable(dtable=>dtable=[...data]);
+    //     });
+
+    //     // return () => {
+    //     //     setDataTable(dtable=>dtable=[])
+    //     // }
+
+    // }
+
+
+
+
+
+
+
 
     // ESTE USEEFFECT LO QU EHACE SACARME  LA
     // CATEGORIA QUE MAS SE REPITE EN LA TABLA

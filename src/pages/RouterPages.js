@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout, Menu} from 'antd';
 import { Categories } from './Categories';
 import {Distrito } from './Distrito';
+import { Charts } from './Charts';
 
 import {
   AppstoreOutlined,
@@ -24,7 +25,7 @@ export const RouterPages = () => {
 
     const { Sider, Content } = Layout;
     return (
-
+ 
        <Router>
             <Layout style={{height:'100vh'}}>
             <Sider /* trigger={null}  collapsible collapsed={this.state.collapsed}*/ >
@@ -44,7 +45,7 @@ export const RouterPages = () => {
                     </Menu.Item>
 
                     <Menu.Item key="3" icon={<PieChartOutlined />}>
-                         <Link to="/"> Punto 3</Link>
+                         <Link to="/charts"> Charts</Link>
                     </Menu.Item>
 
 
@@ -74,6 +75,7 @@ export const RouterPages = () => {
 
                         <Route path="/categorias" component={ Categories }></Route>
                         <Route path="/distrito" component={ Distrito }></Route>
+                        <Route path="/charts" component={ Charts }></Route>
 
                         <Redirect to="/categorias"/>
 

@@ -1,3 +1,6 @@
+// ESTE HELPER ME OBTIENE LA LISTA DE TODOS  LOS DISTRITOS PARA EL PUNTO
+// PUNTO 3
+
 export const crearBotones=async ()=>{
 
 
@@ -7,7 +10,7 @@ export const crearBotones=async ()=>{
     await fetch(url)
     .then(res => res.json())
     .then(response => {
-
+            // IGUAL LLE NO LA DATA PARA LOS BOTOES DE CADA DISTRITO EN EL PUNTO 3
         response.forEach(({PdDistrict})=>{
               data=[...data,PdDistrict]
         });

@@ -5,3 +5,4 @@ export const OptionCat = ({value}) => {
         <option value={value}>{value}</option>
     )
 }
+

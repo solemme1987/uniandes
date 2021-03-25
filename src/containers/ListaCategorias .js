@@ -29,15 +29,15 @@ export const ListaCategorias  = () => {
     return (
 
         <select className="date border " onChange={changeCategori}  >
-         {
-                    opciones.map((element)=>(
+            {
+                opciones.map((element)=>(
 
-                        <OptionCat
-                            key={element}
-                            value={element}
-                        />
-                    ))
-                }
+                    <OptionCat
+                        key={element}
+                        value={element}
+                    />
+                ))
+            }
         </select>
 
     )

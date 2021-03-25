@@ -15,18 +15,17 @@ import { ListaCategorias } from '../containers/ListaCategorias ';
 
 
 export const FormCategory = ({showSelect}) => {
-   console.log(showSelect)
     //tod lo que me provee el use context
-    const 
+    const
     {
         setStartHour,
         setEndHour,
         startHour,
         endHour,
         starDate,
-        endDate, 
+        endDate,
         setUrl,
-        setUrlDistrito, 
+        setUrlDistrito,
         categoria,
         tableHead
     } = useContext(Context);

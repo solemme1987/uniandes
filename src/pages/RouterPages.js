@@ -20,6 +20,7 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
+import { ChartsByYear } from './ChartsByYear';
 
 export const RouterPages = () => {
 
@@ -37,24 +38,24 @@ export const RouterPages = () => {
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
 
                     <Menu.Item key="1" icon={ <AppstoreOutlined />}>
-                         <Link to="/categorias"> Categorías</Link>
+                         <Link to="/categorias">1. Tabla/Categorías</Link>
                     </Menu.Item>
 
                     <Menu.Item key="2" icon={<BankOutlined />}>
-                         <Link to="/distrito"> Por distrito</Link>
+                         <Link to="/distrito">2. Tabla/Distrito</Link>
                     </Menu.Item>
 
                     <Menu.Item key="3" icon={<PieChartOutlined />}>
-                         <Link to="/charts"> Charts</Link>
+                         <Link to="/charts">3. Gráfica/Distrito</Link>
                     </Menu.Item>
 
 
                     <Menu.Item key="4" icon={<EnvironmentOutlined />}>
-                         <Link to="/"> Punto 4</Link>
+                         <Link to="/">4. Mapa de Calor</Link>
                     </Menu.Item>
 
                     <Menu.Item key="5" icon={<BarChartOutlined />}>
-                         <Link to="/"> Punto 5</Link>
+                         <Link to="/chartsbyyear">5. Gráfica/Año</Link>
                     </Menu.Item>
 
                 </Menu>
@@ -76,6 +77,8 @@ export const RouterPages = () => {
                         <Route path="/categorias" component={ Categories }></Route>
                         <Route path="/distrito" component={ Distrito }></Route>
                         <Route path="/charts" component={ Charts }></Route>
+                        <Route path="/chartsbyyear" component={ ChartsByYear }></Route>
+
 
                         <Redirect to="/categorias"/>
 

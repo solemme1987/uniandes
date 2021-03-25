@@ -19,7 +19,7 @@ export const GraficYears = ({url}) => {
           console.log('fetch data failed', error);
         });
     };
-    var config = {
+    let config = {
       data: data,
       xField: 'Category',
       yField: 'ReportCount',

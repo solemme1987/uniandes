@@ -11,6 +11,7 @@ import {
   EnvironmentOutlined,
   BarChartOutlined,
   GlobalOutlined,
+  RadarChartOutlined,
 } from '@ant-design/icons';
 
 import {
@@ -21,12 +22,13 @@ import {
     Redirect
   } from "react-router-dom";
 import { ChartsByYear } from './ChartsByYear';
+import { ChartsByDay } from './ChartsByDay';
 
 export const RouterPages = () => {
 
     const { Sider, Content } = Layout;
     return (
- 
+
        <Router>
             <Layout style={{height:'100vh'}}>
             <Sider /* trigger={null}  collapsible collapsed={this.state.collapsed}*/ >
@@ -57,6 +59,9 @@ export const RouterPages = () => {
                     <Menu.Item key="5" icon={<BarChartOutlined />}>
                          <Link to="/chartsbyyear">5. Gráfica/Año</Link>
                     </Menu.Item>
+                    <Menu.Item key="7" icon={<RadarChartOutlined />}>
+                         <Link to="/chartsbyday">7. Gráfica/Día</Link>
+                    </Menu.Item>
 
                 </Menu>
 
@@ -78,7 +83,7 @@ export const RouterPages = () => {
                         <Route path="/distrito" component={ Distrito }></Route>
                         <Route path="/charts" component={ Charts }></Route>
                         <Route path="/chartsbyyear" component={ ChartsByYear }></Route>
-
+                        <Route path="/chartsbyday" component={ ChartsByDay }></Route>
 
                         <Redirect to="/categorias"/>
 

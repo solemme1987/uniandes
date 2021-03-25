@@ -9,7 +9,7 @@ import { Tables } from '../components/Tables';
 export const Categories = () => {
 
     const {url,setDataTable,setTableHead} = useContext(Context)
-    
+
     // COLUMNAS DE LA TABLA PAR CATEGORIAS PRIMER PUNTO
        const columns = [{
                title: 'CATEGORÍA',
@@ -50,7 +50,7 @@ export const Categories = () => {
             setDataTable(dtable=>dtable=[])
         )
 
-     },[url])
+     },[url,setTableHead,setDataTable])
 
 
     return (

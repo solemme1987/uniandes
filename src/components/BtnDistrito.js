@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Button, Col} from 'antd';
+import {Col} from 'antd';
 
 export const BtnDistrito = ({element,setDistrito}) => {
 
-    const [size, setsize] = useState('xs');
+    const [size] = useState('xs');
 
     const getDistrito=(e)=>{
         setDistrito(dis=>dis=e.target.value)

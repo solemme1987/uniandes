@@ -1,15 +1,12 @@
-import React, { useContext, useEffect, useState} from 'react';
+import React, { useContext} from 'react';
 import moment from 'moment';
 import {
   Form,
-  Button,
   TimePicker,
-  Select,
 } from 'antd';
 
 import { Context } from './context/Context';
 import { Date } from './Date';
-import { Option } from 'antd/lib/mentions';
 import { ListaCategorias } from '../containers/ListaCategorias ';
 
 
@@ -33,8 +30,6 @@ export const FormCategory = ({showSelect}) => {
     const format = 'HH'; //formato para la hora
 
 
-
-   
     // CAMBIO LA HORA DE INICO Y LA AGREGO A LA URL
     function changeStartHour(time, timeString) {
 
@@ -104,7 +99,7 @@ export const FormCategory = ({showSelect}) => {
                 <TimePicker className="date border " onChange={changeEndtHour} defaultValue={moment('00', 'HH')} format={format}/>
             </Form.Item>
 
-            <Form.Item name="categoria" className="inputData " style={{display:showSelect}} >
+            <Form.Item className="inputData " style={{display:showSelect}} >
                   <label>Categorias</label>
                   <ListaCategorias  />
             </Form.Item>

@@ -9,9 +9,6 @@ const {setEndDate,setStarDate,startHour,endHour,starDate,endDate, setUrl,setUrlD
 
     const mostrar=(date)=>{
 
-        console.log('Ricardo cortes')
-        console.log(tipo)
-        console.log(date)
         if(tipo==='incio'){
 
              if(tableHead==='categoria'){
@@ -20,7 +17,7 @@ const {setEndDate,setStarDate,startHour,endHour,starDate,endDate, setUrl,setUrlD
                  let inicio=refd.current.value;
                  let newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${inicio}T${startHour}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
                  setUrl(nUrl=>nUrl=newUrl);
-                 console.log(newUrl);
+
 
               } else{
                 setStarDate((startDate)=>startDate=refd.current.value);

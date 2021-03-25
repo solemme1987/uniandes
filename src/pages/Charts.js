@@ -8,7 +8,7 @@ import { crearBotones } from '../helpers/getDistritosName';
 
 
 export const Charts = () => {
-    const [size, setSize] = useState('large');
+    const [size] = useState('large');
 
     const [distrito, setDistrito] = useState('CENTRAL');
 
@@ -19,13 +19,10 @@ export const Charts = () => {
         useEffect(() => {
            crearBotones().then(nomDis=>setNombresDistritos(nomDis))
            return(
-               setNombresDistritos([]) 
+               setNombresDistritos([])
            )
         }, [])
 
-        if(nombresDistritos.length>0){
-            console.log(nombresDistritos)
-        }
 
     return (
      <>

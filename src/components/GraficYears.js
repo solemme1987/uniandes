@@ -7,10 +7,10 @@ export const GraficYears = ({url}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-      asyncFetch();
+      asyncFetch(url);
     }, [url]);
 
-    const asyncFetch = () => {
+    const asyncFetch = (url) => {
 
     fetch(url)
     .then((response) => response.json())
@@ -36,7 +36,6 @@ export const GraficYears = ({url}) => {
       color: ['#1979C9', '#D62A0D', '#FAA219'],
     };
 
-   
     return (
         <>
             <Line {...config} /> 

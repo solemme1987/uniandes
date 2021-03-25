@@ -46,7 +46,7 @@ export const Distrito = () => {
         return(
             setDataTable(dtable=>dtable=[])
         )
-    },[urlDistrito]);
+    },[urlDistrito,setDataTable,setTableHead]);
 
     return (
         <>

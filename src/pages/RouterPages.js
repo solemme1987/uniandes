@@ -12,6 +12,7 @@ import {
   BarChartOutlined,
   GlobalOutlined,
   RadarChartOutlined,
+  PhoneOutlined,
 } from '@ant-design/icons';
 
 import {
@@ -21,8 +22,10 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
+
 import { ChartsByYear } from './ChartsByYear';
 import { ChartsByDay } from './ChartsByDay';
+import { CallReport } from './CallReport';
 
 export const RouterPages = () => {
 
@@ -59,6 +62,11 @@ export const RouterPages = () => {
                     <Menu.Item key="5" icon={<BarChartOutlined />}>
                          <Link to="/chartsbyyear">5. Gráfica/Año</Link>
                     </Menu.Item>
+
+                    <Menu.Item key="6" icon={<PhoneOutlined />}>
+                         <Link to="/callreport">6. Call/Report</Link>
+                    </Menu.Item>
+
                     <Menu.Item key="7" icon={<RadarChartOutlined />}>
                          <Link to="/chartsbyday">7. Gráfica/Día</Link>
                     </Menu.Item>
@@ -84,6 +92,7 @@ export const RouterPages = () => {
                         <Route path="/charts" component={ Charts }></Route>
                         <Route path="/chartsbyyear" component={ ChartsByYear }></Route>
                         <Route path="/chartsbyday" component={ ChartsByDay }></Route>
+                        <Route path="/callreport" component={ CallReport }></Route>
 
                         <Redirect to="/categorias"/>
 

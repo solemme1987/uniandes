@@ -29,7 +29,7 @@ export const SelectYear = () => {
         <Row>
             <Col span={24} style={{fontSize:'1.5rem'}}>
                     <h1>
-                       Elije Año para la gráfica
+                       Elige Año para la gráfica
                     </h1>
             </Col>
          <Col span={24}>

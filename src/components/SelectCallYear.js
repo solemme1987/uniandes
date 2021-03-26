@@ -1,40 +1,45 @@
-import { Col, Row } from 'antd';
+import { Col, Row } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getLisYear } from '../helpers/getListYear';
-import { GraficByDay } from './GraficByDay';
+import { GraficCallReport } from './GraficCallReport';
 import { OptionYears } from './OptionYears';
 
-export const SelectAnioByDay = () => {
+export const SelectCallYear = () => {
 
     const [years, setYears] = useState([])
-    const [url, setUrl] = useState(`http://172.24.99.155:8000/api/semana-llamada/?year=0`)
+    const [url, setUrl] = useState(`http://172.24.99.155:8000/api/llamada-reporte/?year=0`)
 
 
     let urlBasica=`http://172.24.99.155:8000/api/year-enr/`;
 
+
+
+    // capturo los años para el selct
     useEffect(() => {
+
         getLisYear(urlBasica).then(year=>{
             setYears(year)
         })
 
     }, [urlBasica])
 
-    const changeYears =(e)=>{
-        let newUrl = `http://172.24.99.155:8000/api/semana-llamada/?year=${e.target.value}`;
-        setUrl(newUrl);
-    }
-    return (
+ const changeYears=(e)=>{
+    let newUrl = `http://172.24.99.155:8000/api/llamada-reporte/?year=${e.target.value}`;
+    setUrl(newUrl);
+    console.log(newUrl);
+ }
 
+    return (
         <Row>
             <Col span={24} style={{fontSize:'1.5rem'}}>
                     <h1>
-                       Elige Año para Mostra Gráfica
+                      Reportes VS LLamadas
                     </h1>
             </Col>
-         <Col span={24}>
+            <Col span={24}>
 
-             <select className="date borde" onChange={changeYears}>
-             <option defaultValue='0'>0</option>
+            <select className="date borde" onChange={changeYears}>
+             <option defaultValue={0}>0</option>
              {
                 years.map((element)=>(
 
@@ -46,12 +51,11 @@ export const SelectAnioByDay = () => {
              }
 
              </select>
-         </Col>
-         <Col span={24}>
-              <GraficByDay url={url}/>
-         </Col>
 
+            </Col>
+            <Col span={24}>
+             <GraficCallReport url={url}/>
+         </Col>
         </Row>
-
     )
 }

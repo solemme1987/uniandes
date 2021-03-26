@@ -28,11 +28,11 @@ export const GraficCallReport = ({url}) => {
         seriesField: 'typeR',
         groupField: 'month',
         label: {
-                    position: 'middle',
-                    content: function content(item) {
-                        return item.month
-                    },
-                },
+            position: 'middle',
+            content: function content(item){
+                return item.month
+            },
+        },
     };
 
 

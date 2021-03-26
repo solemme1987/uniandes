@@ -4,9 +4,9 @@ import { Context } from './context/Context'
 
 export const Date = ({tipo}) => {
 const {setEndDate,setStarDate,startHour,endHour,starDate,endDate, setUrl,setUrlDistrito,tableHead,categoria} = useContext(Context)
+
+
     const refd = useRef(null)
-
-
     const mostrar=(date)=>{
 
         if(tipo==='incio'){
@@ -19,7 +19,11 @@ const {setEndDate,setStarDate,startHour,endHour,starDate,endDate, setUrl,setUrlD
                  setUrl(nUrl=>nUrl=newUrl);
 
 
-              } else{
+              }
+              else if(tableHead==='map'){
+                console.log('aqui configuro la url del date 1')
+              }
+              else{
                 setStarDate((startDate)=>startDate=refd.current.value);
                 let inicio=refd.current.value;
                 let newUrl =`http://172.24.99.155:8000/api/distritos-filter/${categoria}/?start=${inicio}T${startHour}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
@@ -33,7 +37,12 @@ const {setEndDate,setStarDate,startHour,endHour,starDate,endDate, setUrl,setUrlD
                 let fin=refd.current.value
                 let newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${startHour}:00:00.00Z&end=${fin}T${endHour}:00:00.00Z`;
                  setUrl(nUrl=>nUrl=newUrl)
-            }else{
+            }
+            else if(tableHead==='map'){
+                console.log('aqui configuro la url del date 2')
+            }
+
+            else{
                 setEndDate((startDate)=>startDate=refd.current.value)
                 let fin=refd.current.value
                 let newUrl =`http://172.24.99.155:8000/api/distritos-filter/${categoria}/?start=${starDate}T${startHour}:00:00.00Z&end=${fin}T${endHour}:00:00.00Z`;

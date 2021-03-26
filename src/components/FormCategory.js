@@ -24,7 +24,9 @@ export const FormCategory = ({showSelect}) => {
         setUrl,
         setUrlDistrito,
         categoria,
-        tableHead
+        tableHead,
+        urlMapa, 
+        setUrlMapa
     } = useContext(Context);
 
     const format = 'HH'; //formato para la hora
@@ -41,6 +43,14 @@ export const FormCategory = ({showSelect}) => {
             // AQUI MODIFCO LA URL DEL PUNTO 1 PARA LAS CATEGORIAS
            newUrl=`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${timeString}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
            setUrl(nUrl=>nUrl=newUrl);
+        }
+        else if(tableHead==='map'){
+
+            newUrl=`http://172.24.99.155:8000/api/map/?start=${starDate}T${timeString}:00:00.00Z&end=${endDate}T${endHour}:00:00.00Z`;
+
+            setUrlMapa(nUrl=>nUrl=newUrl);
+            console.log(newUrl);
+
         }
         else {
             // AQUI MODIFCO LA URL DEL PUNTO 2 PARA LOS DISTRITOS
@@ -59,9 +69,16 @@ export const FormCategory = ({showSelect}) => {
 
         if(tableHead==='categoria'){
             newUrl =`http://172.24.99.155:8000/api/categorias-filter/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
-
             setUrl(nUrl=>nUrl=newUrl);
-        }else {
+        }
+
+        else if(tableHead==='map'){
+           newUrl=`http://172.24.99.155:8000/api/map/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
+           setUrlMapa(nUrl=>nUrl=newUrl);
+            console.log(newUrl);
+        }
+
+        else {
 
             newUrl =`http://172.24.99.155:8000/api/distritos-filter/${categoria}/?start=${starDate}T${startHour}:00:00.00Z&end=${endDate}T${timeString}:00:00.00Z`;
 

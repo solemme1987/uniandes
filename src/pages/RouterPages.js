@@ -26,6 +26,7 @@ import {
 import { ChartsByYear } from './ChartsByYear';
 import { ChartsByDay } from './ChartsByDay';
 import { CallReport } from './CallReport';
+import { Map } from './Map';
 
 export const RouterPages = () => {
 
@@ -56,7 +57,7 @@ export const RouterPages = () => {
 
 
                     <Menu.Item key="4" icon={<EnvironmentOutlined />}>
-                         <Link to="/">4. Mapa de Calor</Link>
+                         <Link to="/map">4. Mapa de Calor</Link>
                     </Menu.Item>
 
                     <Menu.Item key="5" icon={<BarChartOutlined />}>
@@ -90,10 +91,10 @@ export const RouterPages = () => {
                         <Route path="/categorias" component={ Categories }></Route>
                         <Route path="/distrito" component={ Distrito }></Route>
                         <Route path="/charts" component={ Charts }></Route>
+                        <Route path="/map" component={Map}></Route>
                         <Route path="/chartsbyyear" component={ ChartsByYear }></Route>
                         <Route path="/chartsbyday" component={ ChartsByDay }></Route>
                         <Route path="/callreport" component={ CallReport }></Route>
-
                         <Redirect to="/categorias"/>
 
                     </Switch>
